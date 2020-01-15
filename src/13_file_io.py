@@ -9,6 +9,18 @@ https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
 # Print all the contents of the file, then close the file
 
 # YOUR CODE HERE
+with open("src/foo.txt") as f:
+    read_data = f.read()
+    print(read_data)
+
+f.closed
+
+# EXAMPLE TO PRINT WORKING DIRECTORY CONTENTS
+# import os
+# cwd = os.getcwd()  # Get the current working directory (cwd)
+# files = os.listdir(cwd)  # Get all the files in that directory
+# print("Files in %r: %s" % (cwd, files))
+
 
 # Open up a file called "bar.txt" (which doesn't exist yet) for
 # writing. Write three lines of arbitrary content to that file,
@@ -16,3 +28,7 @@ https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
 # sure that it contains what you expect it to contain
 
 # YOUR CODE HERE
+with open("src/bar.txt", "w") as f:
+    write_data = f.write("there's a snake in my boots!")
+
+f.closed
