@@ -12,9 +12,13 @@ x.append(4)
 print(x)
 
 # Using y, change x so that it is [1, 2, 3, 4, 8, 9, 10]
-for n in y:
-    x.append(n)
-print(x)
+# for n in y:
+#     x.append(n)
+# OR
+# x.extend(y)
+# OR
+x += y
+print('x;', x)
 
 # Change x so that it is [1, 2, 3, 4, 9, 10]
 x.remove(8)
