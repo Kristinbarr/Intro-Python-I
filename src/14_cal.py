@@ -4,7 +4,7 @@ render a calendar to your terminal.
 https://docs.python.org/3.6/library/calendar.html
 
 Write a program that accepts user input of the form
-  `14_cal.py month [year]`
+  `14_cal.py [month] [year]`
 and does the following:
  - If the user doesn't specify any input, your program should
    print the calendar for the current month. The 'datetime'
@@ -17,6 +17,14 @@ and does the following:
  - Otherwise, print a usage statement to the terminal indicating
    the format that your program expects arguments to be given.
    Then exit the program.
+
+Note: the user should provide argument input (in the initial call to run the file) and not 
+prompted input. Also, the brackets around year are to denote that the argument is
+optional, as this is a common convention in documentation.
+
+This would mean that from the command line you would call `python3 14_cal.py 4 2015` to 
+print out a calendar for April in 2015, but if you omit either the year or both values, 
+it should use today’s date to get the month and year.
 """
 
 import sys
@@ -24,25 +32,28 @@ import calendar
 from datetime import datetime
 
 args = sys.argv
-now = datetime.now()
-m = now.month
-y = now.year
-tc = calendar.TextCalendar()
+print(args)
 
-print('args:', args)
-
-# if no args,
+# if no args...
 if len(args) == 1:
-    tc.prmonth(y,m)
-# if 1 arg, assume month
-elif len(args) == 2 and int(args[1]) < 12:
-    m = int(args[1])
-    tc.prmonth(y,m)
-# if month and year args,
+  # print a text calendar for cur month and year
+  month = datetime.today().month
+  year = datetime.today().year
+  calendar.prmonth(year, month)
+# if arg 1 is supplied...
+elif len(args) == 2:
+  # if int 1-12, print cal for input month, current year
+  month = int(args[1])
+  year = datetime.today().year
+  calendar.prmonth(year, month)
+# if both args are supplied...
 elif len(args) == 3:
-    m = int(args[1])
-    y = int(args[2])
-    tc.prmonth(y,m)
+  # if 1 is int 1-12, if 2 is int
+  # print out calendar for that month and year
+  month = int(args[1])
+  year = int(args[2])
+  calendar.prmonth(year, month)
+# otherwise, print error with usage hint
 else:
-    print('incorrect format')
+  print("ERROR: command must be in the form `14_cal.py [month] [year]`")
 

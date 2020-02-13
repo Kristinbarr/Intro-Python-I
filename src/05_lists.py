@@ -6,31 +6,31 @@ y = [8, 9, 10]
 
 # For the following, DO NOT USE AN ASSIGNMENT (=).
 
+print()
 # Change x so that it is [1, 2, 3, 4]
-# YOUR CODE HERE
 x.append(4)
 print(x)
 
 # Using y, change x so that it is [1, 2, 3, 4, 8, 9, 10]
-# YOUR CODE HERE
-x = x + y
-print(x)
+# for n in y:
+#     x.append(n)
+# OR
+# x.extend(y)
+# OR
+x += y
+print('x;', x)
 
 # Change x so that it is [1, 2, 3, 4, 9, 10]
-# YOUR CODE HERE
 x.remove(8)
 print(x)
 
 # Change x so that it is [1, 2, 3, 4, 9, 99, 10]
-# YOUR CODE HERE
-x.insert(5, 99)
+x.insert(5,99)
 print(x)
 
 # Print the length of list x
-# YOUR CODE HERE
-len(x)
+print(len(x))
 
 # Print all the values in x multiplied by 1000
-# YOUR CODE HERE
-for i in x:
-    print(i * 1000)
+for n in x:
+    print(n * 1000)
